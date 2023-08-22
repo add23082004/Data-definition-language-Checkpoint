@@ -1,0 +1,28 @@
+CREATE TABLE Customers(
+    customer_id INT PRIMARY KEY,
+    name VARCHAR (100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    Address VARCHAR(200) NOT NULL);
+
+
+CREATE TABLE Products(
+    product_id INT PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    price DECIMAL NOT NULL,
+    CHECK (price > 0 ));
+
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    order_date DATE NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id));
+
+EXEC sp_columns Customers 
+EXEC sp_columns Products 
+EXEC sp_columns orders 
+
+
